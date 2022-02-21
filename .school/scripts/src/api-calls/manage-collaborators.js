@@ -2,6 +2,9 @@ import fetch from 'node-fetch';
 
 import { log } from '../../utils/log.js';
 
+// still: deal with pending and failed
+//  failed: add to invite array
+
 export const manageCollaborators = async (
   { env = {}, learners = [], admins = [], coaches = [] },
   // if true, users removed from config are booted from the org

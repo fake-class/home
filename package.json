@@ -8,10 +8,9 @@
     "spell-check": "cspell  \"./**\"",
     "lint:ls": "ls-lint",
     "lint:md": "markdownlint --ignore node_modules --config ./.markdownlint.jsonc --fix ./ ",
-    "sac:full-setup": "./node_modules/.bin/full-setup",
-    "sac:render-readme": "./node_modules/.bin/render-readme",
-    "sac:collaborators": "./node_modules/.bin/collaborators",
-    "sac:update-materials": "./node_modules/.bin/update-materials"
+    "update:people": "node ./.school/scripts/bin/update-collaborators.js && node ./.school/scripts/bin/update-avatars.js && node ./.school/scripts/bin/render-readme.js",
+    "update:modules": "node ./.school/scripts/bin/update-modules.js && node ./.school/scripts/bin/render-readme.js",
+    "update:readme": "node ./.school/scripts/bin/update-avatars.js && node ./.school/scripts/bin/render-readme.js"
   },
   "repository": {
     "type": "git",

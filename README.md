@@ -38,8 +38,7 @@ doing things with git
 > [retros](https://github.com/fake-class/home/issues/?q=milestone%3Aprecourse+label%3Aretro+label%3Acheck-in)
 > |
 > [roll-calls](https://github.com/fake-class/home/issues/?q=milestone%3Aprecourse+label%3Aroll-call)
-> | [milestone](https://github.com/fake-class/home/milestone/8) ||
-> [gitpod](https://gitpod.io/#https://github.com/hackyourfuturebelgium/precourse)
+> || [milestone](https://github.com/fake-class/home/milestone/8)
 
 set up your computer and accounts
 
@@ -56,8 +55,7 @@ set up your computer and accounts
 > [retros](https://github.com/fake-class/home/issues/?q=milestone%3Aworkflows+label%3Aretro+label%3Acheck-in)
 > |
 > [roll-calls](https://github.com/fake-class/home/issues/?q=milestone%3Aworkflows+label%3Aroll-call)
-> | [milestone](https://github.com/fake-class/home/milestone/7) ||
-> [gitpod](https://gitpod.io/#https://github.com/hackyourfuturebelgium/workflows)
+> || [milestone](https://github.com/fake-class/home/milestone/7)
 
 learn the skills you need to work with code individually and in a code
 
@@ -74,8 +72,7 @@ learn the skills you need to work with code individually and in a code
 > [retros](https://github.com/fake-class/home/issues/?q=milestone%3Aagile-development+label%3Aretro+label%3Acheck-in)
 > |
 > [roll-calls](https://github.com/fake-class/home/issues/?q=milestone%3Aagile-development+label%3Aroll-call)
-> | [milestone](https://github.com/fake-class/home/milestone/9) ||
-> [gitpod](https://gitpod.io/#https://github.com/hackyourfuturebelgium/agile-development)
+> || [milestone](https://github.com/fake-class/home/milestone/9)
 
 practice planning, developing, and adapting projects as a group
 
@@ -92,8 +89,7 @@ practice planning, developing, and adapting projects as a group
 > [retros](https://github.com/fake-class/home/issues/?q=milestone%3Aux/ui-design+label%3Aretro+label%3Acheck-in)
 > |
 > [roll-calls](https://github.com/fake-class/home/issues/?q=milestone%3Aux/ui-design+label%3Aroll-call)
-> | [milestone](https://github.com/fake-class/home/milestone/10) ||
-> [gitpod](https://gitpod.io/#https://github.com/hackyourfuturebelgium/ux-ui-design)
+> || [milestone](https://github.com/fake-class/home/milestone/10)
 
 explore the design thinking process and placing your users first when planning
 and developing a website

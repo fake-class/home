@@ -10,9 +10,9 @@ import { compileEnv } from '../src/compile-env/index.js';
 import { parseConfigs } from '../src/parse-configs/index.js';
 
 import { renderReadme } from '../src/render-readme/index.js';
-import { replaceInReadme } from '../src/utils/replace-in-readme.js';
+import { replaceInReadme } from '../utils/replace-in-readme.js';
 
-import { prettierConfig } from '../src/prettier-config.js';
+import { prettierConfig } from '../prettier-config.js';
 
 const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
