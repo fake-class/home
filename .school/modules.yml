@@ -1,19 +1,19 @@
-title: Gitting
-description: doing things with git
+description: becoming pro
 board: 1
 path:
   - name: Precourse
     description: set up your computer and accounts
     url: https://github.com/hackyourfuturebelgium/precourse
     milestone: 8
-    state: closed
+    state: open
     weeks: 1
   - name: Workflows
-    description: learn the skills you need to work with code individually and in a code
+    description:
+      learn the skills you need to work with code individually and in a code
     url: https://github.com/hackyourfuturebelgium/workflows
-    milestone: 7
     state: open
     weeks: 2
+    milestone: 7
   - name: Agile Development
     description: practice planning, developing, and adapting projects as a group
     url: https://github.com/hackyourfuturebelgium/agile-development
@@ -28,3 +28,57 @@ path:
     milestone: 10
     state: open
     weeks: 2
+  - name: Welcome to JS
+    description: welcome to js
+    url: https://github.com/hackyourfuturebelgium/welcome-to-js
+    state: open
+    weeks: 3
+    milestone: 11
+  - name: Debugging
+    description: hello
+    url: https://github.com/hackyourfuturebelgium/debugging
+    state: open
+    weeks: 4
+    milestone: 13
+  - name: Behavior, Strategy, Implementation
+    description: hello
+    url: https://github.com/hackyourfuturebelgium/behavior-strategy-implementation
+    state: open
+    weeks: 3
+    milestone: 16
+  - name: Separation of Concerns
+    description: hello
+    url: https://github.com/hackyourfuturebelgium/separation-of-concerns
+    state: open
+    weeks: 3
+    milestone: 15
+  - name: Asynchronous Programming
+    description: hello
+    url: https://github.com/hackyourfuturebelgium/asynchronous-programming
+    state: open
+    weeks: 3
+    milestone: 12
+  - name: Headless CMS
+    description: hello
+    url: https://github.com/hackyourfuturebelgium/headless-cms
+    state: open
+    weeks: 3
+    milestone: 14
+  - name: Component Based Design
+    description: hello
+    url: https://github.com/hackyourfuturebelgium/component-based-design
+    state: open
+    weeks: 3
+    milestone: 19
+  - name: Individual Project
+    description: hello
+    url: https://github.com/hackyourfuturebelgium/individual-project
+    state: open
+    weeks: 2
+    milestone: 17
+  - name: Final Project
+    description: hello
+    url: https://github.com/hackyourfuturebelgium/final-project
+    state: open
+    weeks: 6
+    milestone: 18

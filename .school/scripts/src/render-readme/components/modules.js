@@ -37,23 +37,23 @@ export const modules = (
   let moduleSection = `### [${formattedName}](${url})`;
 
   if (typeof weeks === 'number') {
-    moduleSection += ` - ${weeks} week${weeks === 1 ? '' : 's'}`;
+    moduleSection += `: ${weeks} week${weeks === 1 ? '' : 's'}`;
     moduleSection += state === 'closed' ? ` (closed)` : '';
   }
 
   moduleSection += '\n\n>';
 
-  moduleSection += issuesSearch('question', 'questions') + ' | ';
+  // moduleSection += issuesSearch('question', 'questions') + ' | ';
 
-  moduleSection += issuesSearch('help-wanted') + ' || ';
+  // moduleSection += issuesSearch('help-wanted') + ' || ';
 
   moduleSection += issuesSearch('check-in', 'check-ins') + ' | ';
 
   moduleSection += projectSearch('deliverable', 'deliverables') + ' | ';
 
-  moduleSection += issuesSearch(['retro', 'check-in'], 'retros') + ' | ';
+  moduleSection += issuesSearch('roll-call', 'roll-calls') + ' | ';
 
-  moduleSection += issuesSearch('roll-call', 'roll-calls') + ' || ';
+  moduleSection += issuesSearch(['retro', 'check-in'], 'retros') + ' || ';
 
   moduleSection += `[milestone](https://github.com/${env.user}/${env.repo}/milestone/${milestone})`;
 

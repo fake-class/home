@@ -94,9 +94,9 @@ export const manageMilestones = async ({ modules = {}, env = {} }) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          if (data && data.number) {
+          if (data) {
             module.milestone = data.number;
-            module.state || (module.state = data.state);
+            module.state && (module.state = data.state);
           }
         }),
     );

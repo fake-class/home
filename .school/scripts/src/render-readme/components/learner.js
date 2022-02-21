@@ -23,8 +23,10 @@ export const learner = (
   )}/avatars/${user}.jpeg)`;
 
   const helpLinks = [
-    issuesSearch('question', 'questions'),
-    issuesSearch('help-wanted'),
+    `[help wanted](${repoURL}/discussions/categories/help-wanted?discussions_q=author%3A${user}+category%3Ahelp-wanted+is:unanswered )`,
+    `[questions](${repoURL}/discussions/categories/question?discussions_q=author%3A${user}+category%3AQ%26A+is:unanswered )`,
+    // issuesSearch('question', 'questions'),
+    // issuesSearch('help-wanted'),
   ];
   const selfLinks = [
     `[${user}](https://github.com/${user})`,
@@ -34,8 +36,8 @@ export const learner = (
   const classLinks = [
     issuesSearch('check-in', 'check-ins'),
     projectSearch('deliverable', 'deliverables'),
-    issuesSearch('retro', 'retros'),
     issuesSearch('roll-call', 'roll-calls'),
+    issuesSearch('retro', 'retros'),
   ];
   const issuesLinks = [
     `[opened](${repoURL}/issues?q=author%3A${user})`,

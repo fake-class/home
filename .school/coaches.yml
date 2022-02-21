@@ -1,5 +1,6 @@
 - name: yoshi
   user: yoshimalaise
+  homePage: asdfasdf
   modules:
     - dinge
     - chose
