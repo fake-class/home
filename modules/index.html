@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link href="./styles.css" rel="stylesheet" />
-    <link href="../.school/public/gh-styles.css" rel="stylesheet" />
+    <link href="../assets/public/gh-styles.css" rel="stylesheet" />
 
     <base target="_blank" />
   </head>
@@ -34,7 +34,7 @@
       };
     </script>
 
-    <script src="../.school/public/marked.min.js"></script>
+    <script src="../assets/public/marked.min.js"></script>
 
     <script id="utils">
       // const log = (thing) => (console.log(thing), thing);
@@ -120,14 +120,14 @@
     </script>
 
     <script type="module" id="init">
-      import { nameToTitle } from '../../.school/scripts/utils/name-to-title.js';
-      import { load } from '../../.school/scripts/utils/js-yaml.js';
+      import { nameToTitle } from '../../assets/scripts/utils/name-to-title.js';
+      import { load } from '../../assets/scripts/utils/js-yaml.js';
 
       (async () => {
         try {
           const [modulesYaml, orgYaml] = await Promise.all([
-            fetch('../../.school/modules.yml').then((res) => res.text()),
-            fetch('../../.school/org.yml').then((res) => res.text()),
+            fetch('../../assets/modules.yml').then((res) => res.text()),
+            fetch('../../assets/org.yml').then((res) => res.text()),
           ]);
 
           state.modules = load(modulesYaml);
