@@ -1,0 +1,22 @@
+name: setup
+
+on: workflow_dispatch
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - run: npm install
+
+      - run:
+          'npm run sac:full-setup -- repo=${{ github.event.repository.name }}
+          user=${{ github.repository_owner }} token=${{ github.token }}'
+
+      - name: commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4.7.2
+        with:
+          commit_message: update materials
+          branch: ${{ github.head_ref }}

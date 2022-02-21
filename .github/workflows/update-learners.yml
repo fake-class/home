@@ -1,0 +1,26 @@
+name: update learners
+
+on: workflow_dispatch
+
+jobs:
+  update-learners:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - run: npm install
+
+      - run: 'npm run sac:avatars'
+      - run:
+          'npm run sac:collaborators -- repo=${{ github.event.repository.name }}
+          user=${{ github.repository_owner }}'
+      - run:
+          'npm run sac:render-readme -- repo=${{ github.event.repository.name }}
+          user=${{ github.repository_owner }}'
+
+      - name: commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4.7.2
+        with:
+          commit_message: update learners
+          branch: ${{ github.head_ref }}

@@ -1,0 +1,6 @@
+- name: yoshi
+  user: yoshimalaise
+  modules:
+    - dinge
+    - chose
+    - Workflows
