@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="./.school/public/gh-styles.css" rel="stylesheet" />
+
+    <!-- <base target="_blank" /> -->
+  </head>
+
+  <body>
+    <div id="user-interface">
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+        "
+      >
+        <h2><a href="./calendar/index.html" target="_blank">Calendar</a></h2>
+        <h2><a href="./modules/index.html" target="_blank">Modules</a></h2>
+        <h2>
+          <a href="./randomizer/index.html" target="_blank">Randomizer</a>
+        </h2>
+      </div>
+
+      <hr />
+      <hr />
+
+      <div id="readme-container"></div>
+    </div>
+
+    <script src="./.school/public/marked.min.js"></script>
+
+    <script type="module" id="init">
+      import { nameToTitle } from '../.school/scripts/utils/name-to-title.js';
+      import { load } from '../.school/scripts/utils/js-yaml.js';
+
+      (async () => {
+        try {
+          const orgYaml = await fetch('../.school/org.yml').then((res) =>
+            res.text(),
+          );
+
+          const orgInfo = { ...load(orgYaml) };
+
+          // -- title --
+
+          document.title = nameToTitle(orgInfo.name);
+
+          // -- render and append readme --
+
+          const readmeMd = await fetch(`../README.md`).then((res) =>
+            res.text(),
+          );
+          const readme = marked.parse(readmeMd, { gfm: true });
+          document.getElementById('readme-container').innerHTML = readme;
+
+          // -- navigate to the anchor if there is one ---
+          const hash = new URL(window.location.href).hash;
+          if (hash) {
+            window.hash = hash;
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      })();
+    </script>
+  </body>
+</html>

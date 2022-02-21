@@ -2,6 +2,13 @@
 
 # Home: Fake Class
 
+> <details>
+> <summary>Tech Support</summary>
+>
+> [![Rubber Ducky](./assets/rubber-ducky.png)](https://rubberduckdebugging.com/)
+>
+>  </details>
+
 - [Modules](#modules)
 - [Study Board](https://github.com/fake-class/home/projects/1)
 - [Discussions](https://github.com/fake-class/home/discussions)
@@ -9,12 +16,12 @@
   - [Q & A](https://github.com/fake-class/home/discussions/categories/q-a)
   - [Snippets](https://github.com/fake-class/home/discussions/categories/snippets)
   - [Vocabulary](https://github.com/fake-class/home/discussions/categories/vocabulary)
+- [Issues](https://github.com/fake-class/home/issues)
+- [Pull Requests](https://github.com/fake-class/home/pulls)
 - People
   - [Learners](#learners)
   - [Coaches](#coaches)
   - [Admins](#admins)
-- [Issues](https://github.com/fake-class/home/issues)
-- [Pull Requests](https://github.com/fake-class/home/pulls)
 
 ---
 
@@ -238,8 +245,7 @@ hello
 
 ## Coaches
 
-| ![yoshimalaise avatar](./.school/assets/avatars/yoshimalaise.jpeg) | <h3 id="yoshimalaise">yoshi</h3><br>[yoshimalaise](https://github.com/yoshimalaise) \| [home page](asdfasdf)<br>[opened](https://github.com/fake-class/home/issues?q=author%3Ayoshimalaise) \| [assigned](https://github.com/fake-class/home/issues?q=assignee%3Ayoshimalaise) \| [commented](https://github.com/fake-class/home/issues?q=commenter%3Ayoshimalaise) \| [mentioned](https://github.com/fake-class/home/issues?q=mentions%3Ayoshimalaise)<br>modules:<ul><li>dinge</li><li>chose</li><li>Workflows</li></ul> |
-| ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+<table><tr><td> <img alt="yoshimalaise avatar" style="height: 150px; width: 150px;" src="./.school/assets/avatars/yoshimalaise.jpeg"> </td><td> <h3 id="yoshimalaise">yoshi</h3><br><a href="https://github.com/yoshimalaise">yoshimalaise</a> | <a href="asdfasdf">home page</a><br><a href="https://github.com/fake-class/home/issues?q=author%3Ayoshimalaise">opened</a> | <a href="https://github.com/fake-class/home/issues?q=assignee%3Ayoshimalaise">assigned</a> | <a href="https://github.com/fake-class/home/issues?q=commenter%3Ayoshimalaise">commented</a> | <a href="https://github.com/fake-class/home/issues?q=mentions%3Ayoshimalaise">mentioned</a><br>modules:<ul style><li>UX/UI Design</li><li>Component-Based Design</li><li>Individual Projects</li></ul> </td></tr></table>
 
 ---
 

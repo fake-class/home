@@ -6,33 +6,33 @@ export const coach = (
 
   // --- scoped utilities for generating links ---
 
-  const aList = (...rows) => rows.map((row) => row.join(' \\| ')).join('<br>');
+  const aList = (...rows) => rows.map((row) => row.join(' | ')).join('<br>');
 
   // --- build the section ---
 
   const header = `<h3 id="${user || name}">${name}</h3>`;
 
-  const avatar = `![${user} avatar](./${env.assetsPath.join(
+  const avatar = `<img alt="${user} avatar" style="height: 150px; width: 150px;" src="./${env.assetsPath.join(
     '/',
-  )}/avatars/${user}.jpeg)`;
+  )}/avatars/${user}.jpeg">`;
 
-  const selfLinks = [`[${user}](https://github.com/${user})`];
+  const selfLinks = [`<a href="https://github.com/${user}">${user}</a>`];
   if (homePage) {
-    selfLinks.push(`[home page](${homePage})`);
+    selfLinks.push(`<a href="${homePage}">home page</a>`);
   }
 
   const issuesLinks = [
-    `[opened](${repoURL}/issues?q=author%3A${user})`,
-    `[assigned](${repoURL}/issues?q=assignee%3A${user})`,
-    `[commented](${repoURL}/issues?q=commenter%3A${user})`,
-    `[mentioned](${repoURL}/issues?q=mentions%3A${user})`,
+    `<a href="${repoURL}/issues?q=author%3A${user}">opened</a>`,
+    `<a href="${repoURL}/issues?q=assignee%3A${user}">assigned</a>`,
+    `<a href="${repoURL}/issues?q=commenter%3A${user}">commented</a>`,
+    `<a href="${repoURL}/issues?q=mentions%3A${user}">mentioned</a>`,
   ];
 
   const linksList = aList(selfLinks, issuesLinks);
 
   const modulesList =
     modules.length > 0
-      ? `modules:<ul>${modules
+      ? `modules:<ul style>${modules
           .map((module) => `<li>${module}</li>`)
           .join('')}</ul>`
       : '';
@@ -41,8 +41,7 @@ export const coach = (
 
 ${
   user
-    ? `| ${avatar} | ${header}<br>${linksList}<br>${modulesList} |
-| --------- | ------------ |`
+    ? `<table><tr><td> ${avatar} </td><td> ${header}<br>${linksList}<br>${modulesList} </td></tr></table>`
     : header
 }
 

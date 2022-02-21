@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="./styles.css" rel="stylesheet" />
+    <link href="../.school/public/gh-styles.css" rel="stylesheet" />
+
+    <base target="_blank" />
+  </head>
+
+  <body>
+    <div id="user-interface">
+      <h1 id="header" style="display: inline"></h1>
+
+      <div class="dropdown">
+        <h1>: MODULES</h1>
+        <div class="dropdown-content" id="dropdown-container"></div>
+      </div>
+
+      <hr />
+      <hr />
+
+      <div id="readme-container"></div>
+    </div>
+
+    <script id="data">
+      const state = {
+        modules: {},
+        info: {},
+      };
+    </script>
+
+    <script src="../.school/public/marked.min.js"></script>
+
+    <script id="utils">
+      // const log = (thing) => (console.log(thing), thing);
+
+      const getReadme = (
+        (readmeCache = {}) =>
+        async (repoURL = '') => {
+          if (readmeCache[repoURL]) {
+            return readmeCache[repoURL];
+          }
+
+          const [owner, repo] = repoURL.split('/').slice(-2);
+
+          if (!owner || !repo) {
+            throw new Error('no user or repo provided');
+          }
+
+          const repoData = await fetch(
+            `https://api.github.com/repos/${owner}/${repo}`,
+          ).then((res) => res.json());
+
+          const readmeMd = await fetch(
+            `https://raw.githubusercontent.com/${owner}/${repo}/${repoData.default_branch}/README.md`,
+          ).then((res) => res.text());
+
+          readmeCache[repoURL] = marked.parse(readmeMd, {
+            baseUrl: `${repoURL}/tree/${repoData.default_branch}/`,
+            gfm: true,
+          });
+
+          return readmeCache[repoURL];
+        }
+      )();
+    </script>
+
+    <script id="components">
+      const list = (elements = []) => {
+        const ol = document.createElement('ol');
+        ol.start = 0;
+        for (const element of elements) {
+          const li = document.createElement('li');
+          li.appendChild(element);
+          ol.appendChild(li);
+        }
+        return ol;
+      };
+
+      const renderModuleItem = (module = {}) => {
+        const { name, description, weeks, state, url } = module;
+
+        const moduleEl = document.createElement('text');
+        moduleEl.innerHTML = name;
+        moduleEl.className = 'fake-link';
+
+        moduleEl.addEventListener('click', (event) => {
+          event.preventDefault;
+          moduleEl.style.color = 'firebrick';
+          moduleEl.dispatchEvent(
+            new CustomEvent('display-module', {
+              bubbles: true,
+              detail: module,
+            }),
+          );
+        });
+
+        return moduleEl;
+      };
+    </script>
+
+    <script id="handlers">
+      const displayModule = async (event) => {
+        const { url, name } = event.detail;
+
+        const readmeContainer = document.getElementById('readme-container');
+
+        readmeContainer.innerHTML = '';
+        readmeContainer.innerHTML = await getReadme(url);
+
+        const href = new URL(window.location.href);
+        href.searchParams.set('module', encodeURIComponent(name));
+        window.history.replaceState('', '', href);
+      };
+    </script>
+
+    <script type="module" id="init">
+      import { nameToTitle } from '../../.school/scripts/utils/name-to-title.js';
+      import { load } from '../../.school/scripts/utils/js-yaml.js';
+
+      (async () => {
+        try {
+          const [modulesYaml, orgYaml] = await Promise.all([
+            fetch('../../.school/modules.yml').then((res) => res.text()),
+            fetch('../../.school/org.yml').then((res) => res.text()),
+          ]);
+
+          state.modules = load(modulesYaml);
+          state.info = { ...load(orgYaml) };
+
+          // -- title & header --
+
+          const pageName = nameToTitle(state.info.name);
+          document.title = pageName;
+          document.getElementById('header').innerHTML = pageName;
+
+          // -- initialize UI --
+
+          const dropdownContainer =
+            document.getElementById('dropdown-container');
+
+          const renderedModuleItems = state.modules.path.map(renderModuleItem);
+          const modulesList = list(renderedModuleItems);
+          dropdownContainer.appendChild(modulesList);
+
+          dropdownContainer.addEventListener('display-module', displayModule);
+
+          // -- render initial module if indicated --
+
+          const initialModuleName = decodeURIComponent(
+            new URL(window.location.href).searchParams.get('module'),
+          );
+          const initialModule = state.modules.path.find(
+            (module) => module.name === initialModuleName,
+          );
+          if (initialModule) {
+            displayModule({ detail: initialModule });
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      })();
+    </script>
+  </body>
+</html>

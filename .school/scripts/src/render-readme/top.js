@@ -5,6 +5,13 @@ export const top = ({ env = {}, modules = {} }) =>
     env.user,
   )}
 
+> <details>
+> <summary>Tech Support</summary>
+>
+> [![Rubber Ducky](./assets/rubber-ducky.png)](https://rubberduckdebugging.com/)
+>
+>  </details>
+
 
 - [Modules](#modules)
 - [Study Board](https://github.com/${env.user}/${env.repo}/projects/${
@@ -23,12 +30,12 @@ export const top = ({ env = {}, modules = {} }) =>
   - [Vocabulary](https://github.com/${env.user}/${
     env.repo
   }/discussions/categories/vocabulary)
+- [Issues](https://github.com/${env.user}/${env.repo}/issues)
+- [Pull Requests](https://github.com/${env.user}/${env.repo}/pulls)
 - People
   - [Learners](#learners)
   - [Coaches](#coaches)
   - [Admins](#admins)
-- [Issues](https://github.com/${env.user}/${env.repo}/issues)
-- [Pull Requests](https://github.com/${env.user}/${env.repo}/pulls)
 
 ---
 
