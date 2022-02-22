@@ -93,7 +93,7 @@
           event.preventDefault;
           moduleEl.style.color = 'firebrick';
           moduleEl.dispatchEvent(
-            new CustomEvent('display-module', {
+            new CustomEvent('select-module', {
               bubbles: true,
               detail: module,
             }),
@@ -105,8 +105,12 @@
     </script>
 
     <script id="handlers">
-      const displayModule = async (event) => {
-        const { url, name } = event.detail;
+      const selectModule = async (event) => await swapModules(event.detail);
+    </script>
+
+    <script id="procedures">
+      const swapModules = async (module = {}) => {
+        const { url, name } = module;
 
         const readmeContainer = document.getElementById('readme-container');
 
@@ -115,7 +119,20 @@
 
         const href = new URL(window.location.href);
         href.searchParams.set('module', encodeURIComponent(name));
-        window.history.replaceState('', '', href);
+      };
+
+      const navigateModule = async () => {
+        const currentUrl = window.location.href;
+
+        const initialModuleName = decodeURIComponent(
+          new URL(currentUrl).searchParams.get('module'),
+        );
+        const initialModule = state.modules.path.find(
+          (module) => module.name === initialModuleName,
+        );
+        if (initialModule) {
+          await swapModules(initialModule);
+        }
       };
     </script>
 
@@ -148,19 +165,13 @@
           const modulesList = list(renderedModuleItems);
           dropdownContainer.appendChild(modulesList);
 
-          dropdownContainer.addEventListener('display-module', displayModule);
+          dropdownContainer.addEventListener('select-module', selectModule);
 
-          // -- render initial module if indicated --
+          window.addEventListener('popstate', navigateModule);
 
-          const initialModuleName = decodeURIComponent(
-            new URL(window.location.href).searchParams.get('module'),
-          );
-          const initialModule = state.modules.path.find(
-            (module) => module.name === initialModuleName,
-          );
-          if (initialModule) {
-            displayModule({ detail: initialModule });
-          }
+          // -- render initial module if indicated in URL --
+
+          await navigateModule();
         } catch (err) {
           console.error(err);
         }

@@ -67,34 +67,19 @@ export const manageCollaborators = async (
 
   //  ===   ===  fetch all the initial data  ===   ===
 
-  // const [orgMembers, memberships, invitations, failedInvites, teams] =
   const [orgMembers, invitations, failedInvites, teams] = await Promise.all([
     tokenedFetch(`${ORG_URL}/members`),
-    // tokenedFetch(`${ORG_URL}/memberships`),
     tokenedFetch(`${ORG_URL}/invitations`),
     tokenedFetch(`${ORG_URL}/failed_invitations`),
     tokenedFetch(`${ORG_URL}/teams`),
   ]);
 
   // console.log('org members', orgMembers);
-  // console.log('memberships', memberships);
   // console.log('invitations', invitations);
   // console.log('failed invites', failedInvites);
   // console.log('teams', teams);
 
   //  ===   ===  pre-process all org users  ===   ===
-
-  // const populatedInvites = await Promise.all(
-  //   [...invitations, ...failedInvites].map((invitation) =>
-  //     tokenedFetch(`${ORG_URL}/invitations/${invitation.id}/teams`).then(
-  //       (teams) => ({
-  //         invitation,
-  //         teams,
-  //       }),
-  //     ),
-  //   ),
-  // );
-  // console.log('populated invites', populatedInvites);
 
   const populatedTeams = await Promise.all(
     teams.map((team) =>
@@ -139,12 +124,16 @@ export const manageCollaborators = async (
 
   // people that need to be invited
   const toInvite = localUsers
+    // don't reinvite someone with a pending invite
     .filter((user) => !invitations.find((member) => user.user === member.login))
+    // don't invite someone who is already a member
     .filter(
       (user) => !membersWithTeams.find((member) => user.user === member.login),
+    )
+    // do reinvite people with a failed invitation
+    .concat(
+      failedInvites.map((failedInvite) => ({ user: failedInvite.login })),
     );
-  console.log('failed invites', failedInvites);
-  // .concat(failedInvites.map);
   const usersToInvite = await Promise.all(
     toInvite.map((user) =>
       tokenedFetch(`https://api.github.com/users/${user.user}`),
@@ -255,7 +244,7 @@ export const manageCollaborators = async (
           method: 'DELETE',
           headers: HEADERS,
           body: JSON.stringify({ team_slug: team }),
-        }).catch((err) => console.error('poooopooooop', err));
+        });
       });
 
       return [...addCalls, ...removeCalls];
