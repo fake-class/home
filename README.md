@@ -9,8 +9,11 @@
 >
 >  </details>
 
-- [Modules](#modules)
-- [Study Board](https://github.com/fake-class/home/projects/1)
+- [Class Calendar](https://fake-class.github.io/home/calendar)
+- Modules
+  - [Quick Links](#modules)
+  - [Details](https://fake-class.github.io/home/modules)
+  - [Study Board](https://github.com/fake-class/home/projects/1)
 - [Discussions](https://github.com/fake-class/home/discussions)
   - [Help Wanted](https://github.com/fake-class/home/discussions/categories/help-wanted)
   - [Q & A](https://github.com/fake-class/home/discussions/categories/q-a)
@@ -19,7 +22,8 @@
 - [Issues](https://github.com/fake-class/home/issues)
 - [Pull Requests](https://github.com/fake-class/home/pulls)
 - People
-  - [Learners](#learners)
+  - [Learners](#learners) -
+    [Randomizer](https://fake-class.github.io/home/randomizer)
   - [Coaches](#coaches)
   - [Admins](#admins)
 
@@ -33,7 +37,7 @@
 
 becoming pro
 
-### [Precourse](https://github.com/hackyourfuturebelgium/precourse): 1 week
+### [Precourse](https://github.com/hackyourfuturebelgium/precourse): 1 week (closed)
 
 > [check-ins](https://github.com/fake-class/home/issues/?q=milestone%3Aprecourse+label%3Acheck-in)
 > |
@@ -46,7 +50,7 @@ becoming pro
 
 set up your computer and accounts
 
-### [Workflows](https://github.com/hackyourfuturebelgium/workflows): 2 weeks
+### [Workflows](https://github.com/hackyourfuturebelgium/workflows): 2 weeks (closed)
 
 > [check-ins](https://github.com/fake-class/home/issues/?q=milestone%3Aworkflows+label%3Acheck-in)
 > |
@@ -59,7 +63,7 @@ set up your computer and accounts
 
 learn the skills you need to work with code individually and in a code
 
-### [Agile Development](https://github.com/hackyourfuturebelgium/agile-development): 4 weeks
+### [Agile Development](https://github.com/hackyourfuturebelgium/agile-development): 4 weeks (closed)
 
 > [check-ins](https://github.com/fake-class/home/issues/?q=milestone%3Aagile-development+label%3Acheck-in)
 > |

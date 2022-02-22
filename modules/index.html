@@ -14,17 +14,9 @@
 
   <body>
     <div id="user-interface">
-      <h1 id="header" style="display: inline"></h1>
+      <div id="sidebar-container" class="sidenav"></div>
 
-      <div class="dropdown">
-        <h1>: MODULES</h1>
-        <div class="dropdown-content" id="dropdown-container"></div>
-      </div>
-
-      <hr />
-      <hr />
-
-      <div id="readme-container"></div>
+      <div id="readme-container" class="main"></div>
     </div>
 
     <script id="data">
@@ -38,7 +30,9 @@
 
     <script id="utils">
       // const log = (thing) => (console.log(thing), thing);
+    </script>
 
+    <script id="components">
       const getReadme = (
         (readmeCache = {}) =>
         async (repoURL = '') => {
@@ -60,17 +54,21 @@
             `https://raw.githubusercontent.com/${owner}/${repo}/${repoData.default_branch}/README.md`,
           ).then((res) => res.text());
 
-          readmeCache[repoURL] = marked.parse(readmeMd, {
+          const parsedReadme = marked.parse(readmeMd, {
             baseUrl: `${repoURL}/tree/${repoData.default_branch}/`,
             gfm: true,
           });
 
+          const readmeContainer = document.createElement('div');
+          readmeContainer.className = 'markdown-body';
+          readmeContainer.innerHTML = parsedReadme;
+
+          readmeCache[repoURL] = readmeContainer;
+
           return readmeCache[repoURL];
         }
       )();
-    </script>
 
-    <script id="components">
       const list = (elements = []) => {
         const ol = document.createElement('ol');
         ol.start = 0;
@@ -88,6 +86,10 @@
         const moduleEl = document.createElement('text');
         moduleEl.innerHTML = name;
         moduleEl.className = 'fake-link';
+        if (state === 'closed') {
+          moduleEl.style.textDecoration = 'line-through';
+        }
+        moduleEl.id = url;
 
         moduleEl.addEventListener('click', (event) => {
           event.preventDefault;
@@ -115,23 +117,25 @@
         const readmeContainer = document.getElementById('readme-container');
 
         readmeContainer.innerHTML = '';
-        readmeContainer.innerHTML = await getReadme(url);
+        readmeContainer.appendChild(await getReadme(url));
 
         const href = new URL(window.location.href);
         href.searchParams.set('module', encodeURIComponent(name));
+        window.history.pushState('', '', href);
       };
 
       const navigateModule = async () => {
         const currentUrl = window.location.href;
 
-        const initialModuleName = decodeURIComponent(
+        const navigateToName = decodeURIComponent(
           new URL(currentUrl).searchParams.get('module'),
         );
-        const initialModule = state.modules.path.find(
-          (module) => module.name === initialModuleName,
+        const navigateTo = state.modules.path.find(
+          (module) => module.name === navigateToName,
         );
-        if (initialModule) {
-          await swapModules(initialModule);
+
+        if (navigateTo) {
+          await swapModules(navigateTo);
         }
       };
     </script>
@@ -150,28 +154,39 @@
           state.modules = load(modulesYaml);
           state.info = { ...load(orgYaml) };
 
-          // -- title & header --
+          // -- title --
 
-          const pageName = nameToTitle(state.info.name);
+          const pageName = nameToTitle(state.info.name) + ': modules';
           document.title = pageName;
-          document.getElementById('header').innerHTML = pageName;
 
           // -- initialize UI --
 
-          const dropdownContainer =
-            document.getElementById('dropdown-container');
+          const sidebarContainer = document.getElementById('sidebar-container');
+
+          const sideBarHeader = document.createElement('h2');
+          sideBarHeader.innerHTML = pageName;
+          sidebarContainer.appendChild(sideBarHeader);
 
           const renderedModuleItems = state.modules.path.map(renderModuleItem);
           const modulesList = list(renderedModuleItems);
-          dropdownContainer.appendChild(modulesList);
+          sidebarContainer.appendChild(modulesList);
 
-          dropdownContainer.addEventListener('select-module', selectModule);
+          sidebarContainer.addEventListener('select-module', selectModule);
 
           window.addEventListener('popstate', navigateModule);
 
-          // -- render initial module if indicated in URL --
+          // -- render initial module --
 
-          await navigateModule();
+          const firstOpenModule = state.modules.path.find(
+            (module) => module.state !== 'closed',
+          );
+
+          if (firstOpenModule) {
+            document.getElementById(firstOpenModule.url).click();
+          } else {
+            // fall back to URL-serialized module
+            await navigateModule();
+          }
         } catch (err) {
           console.error(err);
         }

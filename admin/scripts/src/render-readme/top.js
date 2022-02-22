@@ -12,9 +12,11 @@ export const top = ({ env = {}, modules = {} }) =>
 >
 >  </details>
 
-
-- [Modules](#modules)
-- [Study Board](https://github.com/${env.user}/${env.repo}/projects/${
+- [Class Calendar](https://${env.user}.github.io/${env.repo}/calendar)
+- Modules
+  - [Quick Links](#modules)
+  - [Details](https://${env.user}.github.io/${env.repo}/modules)
+  - [Study Board](https://github.com/${env.user}/${env.repo}/projects/${
     modules.board
   })
 - [Discussions](https://github.com/${env.user}/${env.repo}/discussions)
@@ -33,7 +35,9 @@ export const top = ({ env = {}, modules = {} }) =>
 - [Issues](https://github.com/${env.user}/${env.repo}/issues)
 - [Pull Requests](https://github.com/${env.user}/${env.repo}/pulls)
 - People
-  - [Learners](#learners)
+  - [Learners](#learners) - [Randomizer](https://${env.user}.github.io/${
+    env.repo
+  }/randomizer)
   - [Coaches](#coaches)
   - [Admins](#admins)
 

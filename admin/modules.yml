@@ -5,19 +5,20 @@ path:
     description: set up your computer and accounts
     url: https://github.com/hackyourfuturebelgium/precourse
     milestone: 8
-    state: open
+    state: closed
     weeks: 1
   - name: Workflows
-    description: learn the skills you need to work with code individually and in a code
+    description:
+      learn the skills you need to work with code individually and in a code
     url: https://github.com/hackyourfuturebelgium/workflows
-    state: open
+    state: closed
     weeks: 2
     milestone: 7
   - name: Agile Development
     description: practice planning, developing, and adapting projects as a group
     url: https://github.com/hackyourfuturebelgium/agile-development
     milestone: 9
-    state: open
+    state: closed
     weeks: 4
   - name: UX/UI Design
     description: >-
