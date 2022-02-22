@@ -126,8 +126,8 @@
       (async () => {
         try {
           const [modulesYaml, orgYaml] = await Promise.all([
-            fetch('../../admin/modules.yml').then((res) => res.text()),
-            fetch('../../admin/org.yml').then((res) => res.text()),
+            fetch('../admin/modules.yml').then((res) => res.text()),
+            fetch('../admin/org.yml').then((res) => res.text()),
           ]);
 
           state.modules = load(modulesYaml);
