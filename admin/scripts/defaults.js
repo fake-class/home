@@ -2,7 +2,7 @@ export const ENV = {
   user: '',
   repo: '',
   token: '',
-  configPath: ['.school'],
+  configPath: ['admin'],
   readmePath: ['README.md'],
-  assetsPath: ['.school', 'assets'],
+  assetsPath: ['admin', 'assets'],
 };

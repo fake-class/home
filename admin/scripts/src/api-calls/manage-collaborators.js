@@ -276,6 +276,6 @@ export const manageCollaborators = async (
     ...booted,
     ...reTeaming,
     ...deAdmined,
-    ...admined,
+    ..admined,
   ]);
 };

@@ -32,7 +32,7 @@ export const coach = (
 
   const modulesList =
     modules.length > 0
-      ? `modules:<ul style>${modules
+      ? `modules:<ul>${modules
           .map((module) => `<li>${module}</li>`)
           .join('')}</ul>`
       : '';
@@ -41,7 +41,7 @@ export const coach = (
 
 ${
   user
-    ? `<table><tr><td> ${avatar} </td><td> ${header}<br>${linksList}<br>${modulesList} </td></tr></table>`
+    ? `<table><tr><th> ${avatar} </th><th> ${header}<br>${linksList}<br>${modulesList} </th></tr></table>`
     : header
 }
 

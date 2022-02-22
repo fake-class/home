@@ -9,9 +9,9 @@
     "spell-check": "cspell  \"./**\"",
     "lint:ls": "ls-lint",
     "lint:md": "markdownlint --ignore node_modules --config ./.markdownlint.jsonc --fix ./ ",
-    "update:people": "node ./.school/scripts/bin/update-collaborators.js && node ./.school/scripts/bin/update-avatars.js && node ./.school/scripts/bin/render-readme.js",
-    "update:modules": "node ./.school/scripts/bin/update-modules.js && node ./.school/scripts/bin/render-readme.js",
-    "update:readme": "node ./.school/scripts/bin/update-avatars.js && node ./.school/scripts/bin/render-readme.js"
+    "update:people": "node ./admin/scripts/bin/update-collaborators.js && node ./admin/scripts/bin/update-avatars.js && node ./admin/scripts/bin/render-readme.js",
+    "update:modules": "node ./admin/scripts/bin/update-modules.js && node ./admin/scripts/bin/render-readme.js",
+    "update:readme": "node ./admin/scripts/bin/update-avatars.js && node ./admin/scripts/bin/render-readme.js"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,6 @@
 # Persist Configs
 
-Persists the parsed JSON configurations to `.yml` files in `/.school` (or the
+Persists the parsed JSON configurations to `.yml` files in `/admin` (or the
 specified path).
 
 ```js

@@ -304,13 +304,13 @@
     </script>
 
     <script type="module" id="init">
-      import { load } from '../.school/scripts/utils/js-yaml.js';
+      import { load } from '../admin/scripts/utils/js-yaml.js';
 
       (async () => {
         try {
           const [learnersYaml, orgYaml] = await Promise.all([
-            fetch('../.school/learners.yml').then((res) => res.text()),
-            fetch('../.school/org.yml').then((res) => res.text()),
+            fetch('../admin/learners.yml').then((res) => res.text()),
+            fetch('../admin/org.yml').then((res) => res.text()),
           ]);
 
           learners = load(learnersYaml);

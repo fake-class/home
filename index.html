@@ -6,7 +6,7 @@
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link href="./assets/public/gh-styles.css" rel="stylesheet" />
+    <link href="./admin/public/gh-styles.css" rel="stylesheet" />
 
     <!-- <base target="_blank" /> -->
   </head>
@@ -33,15 +33,15 @@
       <div id="readme-container"></div>
     </div>
 
-    <script src="./assets/public/marked.min.js"></script>
+    <script src="./admin/public/marked.min.js"></script>
 
     <script type="module" id="init">
-      import { nameToTitle } from '../assets/public/utils/name-to-title.js';
-      import { load } from '../assets/public/utils/js-yaml.js';
+      import { nameToTitle } from './admin/public/utils/name-to-title.js';
+      import { load } from './admin/public/utils/js-yaml.js';
 
       (async () => {
         try {
-          const orgYaml = await fetch('../assets/org.yml').then((res) =>
+          const orgYaml = await fetch('../admin/org.yml').then((res) =>
             res.text(),
           );
 
