@@ -53,9 +53,7 @@
 
           // -- render and append readme --
 
-          const readmeMd = await fetch(`../README.md`).then((res) =>
-            res.text(),
-          );
+          const readmeMd = await fetch(`./README.md`).then((res) => res.text());
           const readme = marked.parse(readmeMd, { gfm: true });
           document.getElementById('readme-container').innerHTML = readme;
 

@@ -67,14 +67,14 @@ export const manageCollaborators = async (
 
   //  ===   ===  fetch all the initial data  ===   ===
 
-  const [orgMembers, memberships, invitations, failedInvites, teams] =
-    await Promise.all([
-      tokenedFetch(`${ORG_URL}/members`),
-      tokenedFetch(`${ORG_URL}/memberships`),
-      tokenedFetch(`${ORG_URL}/invitations`),
-      tokenedFetch(`${ORG_URL}/failed_invitations`),
-      tokenedFetch(`${ORG_URL}/teams`),
-    ]);
+  // const [orgMembers, memberships, invitations, failedInvites, teams] =
+  const [orgMembers, invitations, failedInvites, teams] = await Promise.all([
+    tokenedFetch(`${ORG_URL}/members`),
+    // tokenedFetch(`${ORG_URL}/memberships`),
+    tokenedFetch(`${ORG_URL}/invitations`),
+    tokenedFetch(`${ORG_URL}/failed_invitations`),
+    tokenedFetch(`${ORG_URL}/teams`),
+  ]);
 
   // console.log('org members', orgMembers);
   // console.log('memberships', memberships);
@@ -84,16 +84,16 @@ export const manageCollaborators = async (
 
   //  ===   ===  pre-process all org users  ===   ===
 
-  const populatedInvites = await Promise.all(
-    [...invitations, ...failedInvites].map((invitation) =>
-      tokenedFetch(`${ORG_URL}/invitations/${invitation.id}/teams`).then(
-        (teams) => ({
-          invitation,
-          teams,
-        }),
-      ),
-    ),
-  );
+  // const populatedInvites = await Promise.all(
+  //   [...invitations, ...failedInvites].map((invitation) =>
+  //     tokenedFetch(`${ORG_URL}/invitations/${invitation.id}/teams`).then(
+  //       (teams) => ({
+  //         invitation,
+  //         teams,
+  //       }),
+  //     ),
+  //   ),
+  // );
   // console.log('populated invites', populatedInvites);
 
   const populatedTeams = await Promise.all(
@@ -138,9 +138,13 @@ export const manageCollaborators = async (
   // console.log('to remove', toRemove);
 
   // people that need to be invited
-  const toInvite = localUsers.filter(
-    (user) => !membersWithTeams.find((member) => user.user === member.login),
-  );
+  const toInvite = localUsers
+    .filter((user) => !invitations.find((member) => user.user === member.login))
+    .filter(
+      (user) => !membersWithTeams.find((member) => user.user === member.login),
+    );
+  console.log('failed invites', failedInvites);
+  // .concat(failedInvites.map);
   const usersToInvite = await Promise.all(
     toInvite.map((user) =>
       tokenedFetch(`https://api.github.com/users/${user.user}`),
@@ -276,6 +280,6 @@ export const manageCollaborators = async (
     ...booted,
     ...reTeaming,
     ...deAdmined,
-    ..admined,
+    ...admined,
   ]);
 };

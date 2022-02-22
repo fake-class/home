@@ -8,8 +8,7 @@ path:
     state: open
     weeks: 1
   - name: Workflows
-    description:
-      learn the skills you need to work with code individually and in a code
+    description: learn the skills you need to work with code individually and in a code
     url: https://github.com/hackyourfuturebelgium/workflows
     state: open
     weeks: 2
