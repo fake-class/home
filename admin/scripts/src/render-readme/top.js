@@ -7,8 +7,7 @@ export const top = ({ env = {}, modules = {} }) =>
 
 > <details>
 > <summary>Tech Support</summary>
->
-> [![Rubber Ducky](./assets/rubber-ducky.png)](https://rubberduckdebugging.com/)
+> <a href="https://rubberduckdebugging.com/"><img alt="Rubber Ducky" src="./assets/rubber-ducky.png"/></a>
 >
 >  </details>
 
